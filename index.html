@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001.github.io</title>
+  <style>
+    :root {
+      --bg: #f7f7f8;
+      --surface: #ffffff;
+      --text: #1f2328;
+      --muted: #656d76;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --surface: #171a21;
+        --text: #e6e8eb;
+        --muted: #9aa4b2;
+        --accent: #60a5fa;
+        --border: #2a2f3a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", "Malgun Gothic", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header, main, footer {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    nav .logo { font-weight: 700; font-size: 1.2rem; }
+    nav ul { display: flex; gap: 20px; list-style: none; }
+    nav a { color: var(--muted); text-decoration: none; }
+    nav a:hover { color: var(--accent); }
+
+    .hero { padding: 64px 0 48px; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; }
+    .hero p { color: var(--muted); margin-top: 12px; font-size: 1.1rem; }
+    .btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover { opacity: 0.9; }
+
+    section { padding: 32px 0; }
+    section h2 { font-size: 1.5rem; margin-bottom: 16px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .card h3 { margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+
+    #counter { font-weight: 700; color: var(--accent); }
+
+    footer {
+      padding: 32px 16px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      margin-top: 32px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">001</div>
+      <ul>
+        <li><a href="#about">소개</a></li>
+        <li><a href="#projects">프로젝트</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>안녕하세요 👋<br>제 홈페이지에 오신 것을 환영합니다</h1>
+      <p>GitHub Pages로 만든 간단한 예제 페이지입니다.</p>
+      <button class="btn" id="clickBtn">눌러보세요</button>
+      <p>버튼을 누른 횟수: <span id="counter">0</span></p>
+    </div>
+
+    <section id="about">
+      <h2>소개</h2>
+      <p>이곳에 자기소개나 사이트 설명을 적어 보세요.</p>
+    </section>
+
+    <section id="projects">
+      <h2>프로젝트</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>프로젝트 A</h3>
+          <p>첫 번째 프로젝트에 대한 짧은 설명입니다.</p>
+        </div>
+        <div class="card">
+          <h3>프로젝트 B</h3>
+          <p>두 번째 프로젝트에 대한 짧은 설명입니다.</p>
+        </div>
+        <div class="card">
+          <h3>프로젝트 C</h3>
+          <p>세 번째 프로젝트에 대한 짧은 설명입니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>연락처</h2>
+      <p>GitHub: <a href="https://github.com/" target="_blank" rel="noopener">github.com</a></p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> 001.github.io
+  </footer>
+
+  <script>
+    let count = 0;
+    const counter = document.getElementById('counter');
+    document.getElementById('clickBtn').addEventListener('click', () => {
+      count++;
+      counter.textContent = count;
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
